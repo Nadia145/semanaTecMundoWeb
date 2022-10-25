@@ -1,5 +1,6 @@
 # from crypt import methods
 
+from crypt import methods
 from flask import Flask, request, jsonify, render_template
 from werkzeug.utils import secure_filename
 from joblib import load
@@ -41,6 +42,14 @@ def modeloFile():
     file = open(path, 'r')
     for line in file:
         print(line)
+    return jsonify({"Resultado": "datos recibidos"})
+
+
+@servidorWeb.route('/modelo', methods=["POST"])
+def model():
+    # Procesar datos de entrado (request)
+    contenido = request.json
+    print(contenido)
     return jsonify({"Resultado": "datos recibidos"})
 
 
