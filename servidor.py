@@ -24,19 +24,17 @@ def formulario():
 @servidorWeb.route('/modeloIA', methods=["POST"])
 def modeloForm():
     # Procesar los datos de entrada
-    contendio = request.form
-    print(contendio)
+    contenido = request.form
+    print(contenido)
 
     datosEntrada = np.array([
         8.7000, 0.8400, 0.0000, 1.4000, 0.0650, 24.0000, 33.0000, 0.9954,
         contenido['pH'],
         contenido['sulfatos'],
         contenido['alcohol']
-
     ])
     # Utilizar el modelo
     resultado = dt.predict(datosEntrada.reshape(1, -1))
-
     return jsonify({"Resultado": str(resultado[0])})
 
 
